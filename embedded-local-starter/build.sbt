@@ -2,7 +2,7 @@ name := "embedded-local-starter"
 
 version := "0.0.1-SNAPSHOT"
 
-scalaVersion := "2.11.4"
+scalaVersion := "2.11.2"
 
 organization := "org.littlewings"
 
@@ -16,6 +16,6 @@ parallelExecution in Test := false
 
 libraryDependencies ++= Seq(
   "org.infinispan" % "infinispan-core" % "7.0.0.Final",
-  "net.jcip" % "jcip-annotations" % "1.0",
-  "org.scalatest" %% "scalatest" % "2.2.2"
+  "net.jcip" % "jcip-annotations" % "1.0" % "provided",
+  "org.scalatest" %% "scalatest" % "2.2.2" % "test"
 )
