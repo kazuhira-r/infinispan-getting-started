@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<infinispan
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="urn:infinispan:config:7.0 http://www.infinispan.org/schemas/infinispan-config-7.0.xsd"
+    xmlns="urn:infinispan:config:7.0">
+
+  <cache-container name="withExpireCacheManager" default-cache="withExpireCache">
+    <local-cache name="withExpireCache">
+      <expiration lifespan="5000" max-idle="3000" />
+    </local-cache>
+    <jmx />
+  </cache-container>
+
+  <cache-container name="simpleCacheManager" default-cache="defaultCache">
+    <local-cache name="defaultCache">
+      <expiration lifespan="5000" max-idle="3000" />
+    </local-cache>
+    <local-cache name="transactionalCache">
+      <locking isolation="REPEATABLE_READ" />
+      <transaction
+          mode="NON_XA"
+          locking="OPTIMISTIC" />
+    </local-cache>
+  </cache-container>
+</infinispan>
