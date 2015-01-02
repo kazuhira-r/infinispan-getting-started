@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<infinispan
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="urn:infinispan:config:7.0 http://www.infinispan.org/schemas/infinispan-config-7.0.xsd"
+    xmlns="urn:infinispan:config:7.0">
+  <jgroups>
+    <stack-file name="udp" path="jgroups.xml" />
+  </jgroups>
+
+  <cache-container name="queryDslCacheManager" shutdown-hook="REGISTER">
+    <transport cluster="cluster" stack="udp" />
+    <jmx duplicate-domains="true" />
+
+    <distributed-cache name="indexingCache">
+      <indexing index="LOCAL">
+        <property name="default.directory_provider">infinispan</property>
+        <property name="default.exclusive_index_use">true</property>
+        <property name="default.indexmanager">org.infinispan.query.indexmanager.InfinispanIndexManager</property>
+        <property name="default.reader.strategy">shared</property>
+        <property name="lucene_version">LUCENE_CURRENT</property>
+      </indexing>
+    </distributed-cache>
+
+    <distributed-cache name="indexLessCache" />
+  </cache-container>
+</infinispan>
