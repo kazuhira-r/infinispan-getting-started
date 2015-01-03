@@ -1,0 +1,8 @@
+package remote_query;
+
+message Book {
+    required string isbn = 1;
+    required string title = 2;
+    required int32 price = 3;
+    required string summary = 4;
+}
