@@ -1,7 +1,5 @@
 package org.littlewings.infinispan.query
 
-import scala.collection.JavaConverters._
-
 import org.infinispan.Cache
 import org.infinispan.manager.DefaultCacheManager
 

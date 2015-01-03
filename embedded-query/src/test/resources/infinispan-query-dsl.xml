@@ -21,6 +21,10 @@
       </indexing>
     </distributed-cache>
 
+    <distributed-cache name="LuceneIndexesData" />
+    <replicated-cache name="LuceneIndexesMetadata" />
+    <replicated-cache name="LuceneIndexesLocking" />
+
     <distributed-cache name="indexLessCache" />
   </cache-container>
 </infinispan>

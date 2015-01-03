@@ -21,5 +21,9 @@
         <property name="lucene_version">LUCENE_CURRENT</property>
       </indexing>
     </distributed-cache>
+
+    <distributed-cache name="LuceneIndexesData" />
+    <replicated-cache name="LuceneIndexesMetadata" />
+    <replicated-cache name="LuceneIndexesLocking" />
   </cache-container>
 </infinispan>
