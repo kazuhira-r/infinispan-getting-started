@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<infinispan
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="urn:infinispan:config:7.1 http://www.infinispan.org/schemas/infinispan-config-7.1.xsd"
+    xmlns="urn:infinispan:config:7.1">
+  <jgroups>
+    <stack-file name="udp" path="jgroups.xml" />
+  </jgroups>
+
+  <cache-container name="cacheManager" shutdown-hook="REGISTER">
+    <transport cluster="cluster" stack="udp" />
+    <jmx duplicate-domains="true" />
+
+    <replicated-cache name="metadataCache">
+      <eviction max-entries="-1" strategy="NONE"/>
+      <expiration max-idle="-1"/>
+    </replicated-cache>
+
+    <distributed-cache name="dataChunksCache"
+                       owners="2"
+                       l1-lifespan="300000">
+      <eviction max-entries="-1" strategy="NONE"/>
+      <expiration max-idle="-1"/>
+    </distributed-cache>
+
+    <replicated-cache name="locksCache">
+      <eviction max-entries="-1" strategy="NONE"/>
+      <expiration max-idle="-1"/>
+    </replicated-cache>
+  </cache-container>
+</infinispan>
