@@ -1,4 +1,4 @@
-name := "lucene-distributed-directory"
+name := "embedded-lucene-distributed-directory"
 
 version := "0.0.1-SNAPSHOT"
 

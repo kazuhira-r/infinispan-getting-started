@@ -1,4 +1,4 @@
-name := "map-reduce"
+name := "embedded-map-reduce"
 
 version := "0.0.1-SNAPSHOT"
 
