@@ -81,7 +81,7 @@ class JCacheRemoteSpec extends FunSpec {
         new MutableConfiguration[String, String]()
           .setTypes(classOf[String], classOf[String])
 
-      an[CacheException] should be thrownBy {
+      a[CacheException] should be thrownBy {
         manager.createCache[String, String, Configuration[String, String]]("testCache", configuration)
       }
 
