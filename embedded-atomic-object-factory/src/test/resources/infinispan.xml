@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<infinispan
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="urn:infinispan:config:7.2 http://www.infinispan.org/schemas/infinispan-config-7.2.xsd"
+        xmlns="urn:infinispan:config:7.2">
+    <jgroups>
+        <stack-file name="udp" path="jgroups.xml"/>
+    </jgroups>
+
+    <cache-container name="clustered" shutdown-hook="REGISTER">
+        <transport cluster="clustered" stack="udp" site="clustered"/>
+        <jmx duplicate-domains="true"/>
+
+        <distributed-cache name="atomicFactoryCache"/>
+    </cache-container>
+</infinispan>
