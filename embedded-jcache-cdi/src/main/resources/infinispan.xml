@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<infinispan
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="urn:infinispan:config:7.0 http://www.infinispan.org/schemas/infinispan-config-7.0.xsd"
+        xmlns="urn:infinispan:config:7.0">
+    <cache-container name="cacheManager" shutdown-hook="REGISTER">
+        <local-cache name="transactionalCache">
+            <transaction mode="NON_XA" auto-commit="true"/>
+            <locking isolation="READ_COMMITTED"/>
+        </local-cache>
+    </cache-container>
+</infinispan>
