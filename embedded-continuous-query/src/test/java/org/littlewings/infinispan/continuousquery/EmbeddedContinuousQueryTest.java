@@ -22,7 +22,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class EmbeddedContinuousQueryTest {
     @Test
     public void testContinuousQuerySimply() {
-        withCache("distCache", 3, (Cache<String, Book> cache) -> {
+        withCache("distCache", 1, (Cache<String, Book> cache) -> {
             QueryFactory queryFactory = Search.getQueryFactory(cache);
             Query query =
                     queryFactory
@@ -200,12 +200,60 @@ public class EmbeddedContinuousQueryTest {
             assertThat(myCqListener.getLeaveCalled())
                     .hasSize(1)
                     .containsOnly(MapEntry.entry(elasticsearch.getIsbn(), 1));
+
+            /////
+            Book newJavaBook =
+                    Book
+                            .create("978-4774169316",
+                                    "Javaエンジニア養成読本 [現場で役立つ最新知識、満載!]",
+                                    3500,
+                                    "Java");
+
+            cache.put(newJavaBook.getIsbn(), newJavaBook);
+
+            assertThat(myCqListener.getJoined())
+                    .hasSize(4)
+                    .containsOnly(MapEntry.entry(elasticsearch.getIsbn(), elasticsearch),
+                            MapEntry.entry(solr.getIsbn(), solr),
+                            MapEntry.entry(jbossEap.getIsbn(), jbossEap),
+                            MapEntry.entry(newJavaBook.getIsbn(), newJavaBook));
+            assertThat(myCqListener.getJoinCalled())
+                    .hasSize(4)
+                    .containsOnly(MapEntry.entry(elasticsearch.getIsbn(), 1),
+                            MapEntry.entry(solr.getIsbn(), 1),
+                            MapEntry.entry(jbossEap.getIsbn(), 1),
+                            MapEntry.entry(newJavaBook.getIsbn(), 1));
+            assertThat(myCqListener.getLeaveCalled())
+                    .hasSize(1)
+                    .containsOnly(MapEntry.entry(elasticsearch.getIsbn(), 1));
+
+            /////
+            cache.remove(newJavaBook.getIsbn());
+
+            assertThat(cache.get(newJavaBook.getIsbn()))
+                    .isNull();
+            assertThat(myCqListener.getJoined())
+                    .hasSize(4)
+                    .containsOnly(MapEntry.entry(elasticsearch.getIsbn(), elasticsearch),
+                            MapEntry.entry(solr.getIsbn(), solr),
+                            MapEntry.entry(jbossEap.getIsbn(), jbossEap),
+                            MapEntry.entry(newJavaBook.getIsbn(), newJavaBook));
+            assertThat(myCqListener.getJoinCalled())
+                    .hasSize(4)
+                    .containsOnly(MapEntry.entry(elasticsearch.getIsbn(), 1),
+                            MapEntry.entry(solr.getIsbn(), 1),
+                            MapEntry.entry(jbossEap.getIsbn(), 1),
+                            MapEntry.entry(newJavaBook.getIsbn(), 1));
+            assertThat(myCqListener.getLeaveCalled())
+                    .hasSize(2)
+                    .containsOnly(MapEntry.entry(elasticsearch.getIsbn(), 1),
+                            MapEntry.entry(newJavaBook.getIsbn(), 1));
         });
     }
 
     @Test
     public void testContinuousQueryNested() {
-        withCache("distCache", 3, (Cache<String, Book> cache) -> {
+        withCache("distCache", 1, (Cache<String, Book> cache) -> {
             QueryFactory queryFactory = Search.getQueryFactory(cache);
             Query query =
                     queryFactory

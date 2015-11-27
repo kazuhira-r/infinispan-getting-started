@@ -14,6 +14,7 @@ public class Tag implements Serializable {
     public Tag(String name) {
         this.name = name;
     }
+
     public String getName() {
         return name;
     }
@@ -25,7 +26,7 @@ public class Tag implements Serializable {
     @Override
     public boolean equals(Object other) {
         if (other instanceof Tag) {
-            Tag otherTag = (Tag)other;
+            Tag otherTag = (Tag) other;
             return Objects.equals(name, otherTag.getName());
         }
 

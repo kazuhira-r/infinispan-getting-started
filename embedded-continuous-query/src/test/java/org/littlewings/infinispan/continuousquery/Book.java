@@ -6,25 +6,15 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import org.hibernate.search.annotations.Analyze;
-import org.hibernate.search.annotations.Field;
-import org.hibernate.search.annotations.Indexed;
-import org.hibernate.search.annotations.IndexedEmbedded;
-
-@Indexed
 public class Book implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @Field(analyze = Analyze.NO)
     private String isbn;
 
-    @Field
     private String title;
 
-    @Field(analyze = Analyze.NO)
     private int price;
 
-    @IndexedEmbedded
     private List<Tag> tags;
 
     public Book() {

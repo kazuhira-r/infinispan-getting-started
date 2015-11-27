@@ -12,27 +12,9 @@
         <jmx duplicate-domains="true"/>
 
         <!--
-        <local-cache name="distCache">
-            <indexing index="LOCAL">
-                <property name="default.directory_provider">infinispan</property>
-                <property name="default.exclusive_index_use">true</property>
-                <property name="default.indexmanager">org.infinispan.query.indexmanager.InfinispanIndexManager</property>
-                <property name="default.reader.strategy">shared</property>
-                <property name="analyzer">org.apache.lucene.analysis.ja.JapaneseAnalyzer</property>
-                <property name="lucene_version">LUCENE_CURRENT</property>
-            </indexing>
-        </local-cache>
+        <local-cache name="distCache"/>
         -->
 
-        <distributed-cache name="distCache">
-            <indexing index="LOCAL">
-                <property name="default.directory_provider">infinispan</property>
-                <property name="default.exclusive_index_use">true</property>
-                <property name="default.indexmanager">org.infinispan.query.indexmanager.InfinispanIndexManager</property>
-                <property name="default.reader.strategy">shared</property>
-                <property name="analyzer">org.apache.lucene.analysis.ja.JapaneseAnalyzer</property>
-                <property name="lucene_version">LUCENE_CURRENT</property>
-            </indexing>
-        </distributed-cache>
+        <distributed-cache name="distCache"/>
     </cache-container>
 </infinispan>
