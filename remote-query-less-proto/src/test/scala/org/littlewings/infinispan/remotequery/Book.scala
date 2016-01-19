@@ -35,7 +35,7 @@ class Book {
   def setTitle(title: String): Unit = this.title = title
 
   @ProtoDoc("@IndexedField(index = false, store=false)")
-  @ProtoField(number = 3, name = "price", `type` = Type.INT32, defaultValue = "0")
+  @ProtoField(number = 3, name = "price", `type` = Type.INT32, required = true, defaultValue = "0")
   def getPrice: Int = price
 
   def setPrice(price: Int): Unit = this.price = price

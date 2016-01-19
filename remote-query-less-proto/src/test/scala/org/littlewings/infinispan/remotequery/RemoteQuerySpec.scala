@@ -110,6 +110,7 @@ class RemoteQuerySpec extends FunSpec with Matchers {
 
         books should have size 1
         books.get(0).title should be("Apache Lucene 入門 ～Java・オープンソース・全文検索システムの構築")
+        books.get(0).price should be(3200)
       }
     }
   }
