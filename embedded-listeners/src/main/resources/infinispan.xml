@@ -9,6 +9,8 @@
 
     <cache-container default-cache="distCache" shutdown-hook="REGISTER">
         <transport stack="udp"/>
-        <distributed-cache name="distCache"/>
+        <distributed-cache name="distCache">
+            <expiration lifespan="30000"/>
+        </distributed-cache>
     </cache-container>
 </infinispan>

@@ -1,7 +1,7 @@
 package org.littlewings.infinispan.listener
 
 import org.infinispan.notifications.Listener
-import org.infinispan.notifications.cachelistener.annotation.{CacheEntriesEvicted, CacheEntryCreated, CacheEntryModified, CacheEntryRemoved}
+import org.infinispan.notifications.cachelistener.annotation._
 import org.infinispan.notifications.cachelistener.event.{CacheEntriesEvictedEvent, CacheEntryEvent}
 
 trait CacheListener[K, V] {
@@ -10,6 +10,7 @@ trait CacheListener[K, V] {
   @CacheEntryCreated
   @CacheEntryModified
   @CacheEntryRemoved
+  @CacheEntryExpired
   def handleEvent(event: CacheEntryEvent[K, V]): Unit = {
     println(s"[${getClass.getSimpleName}]:${name} event = ${event.getType}, isPre = ${event.isPre}, key = ${event.getKey}, value = ${event.getValue}")
   }
