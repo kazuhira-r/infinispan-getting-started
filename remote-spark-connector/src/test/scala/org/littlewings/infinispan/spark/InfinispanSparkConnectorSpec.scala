@@ -13,6 +13,7 @@ import org.infinispan.client.hotrod.{RemoteCache, RemoteCacheManager, Search}
 import org.infinispan.protostream.annotations.ProtoSchemaBuilder
 import org.infinispan.query.dsl.Query
 import org.infinispan.query.remote.client.ProtobufMetadataManagerConstants
+import org.infinispan.spark._
 import org.infinispan.spark.rdd.InfinispanRDD
 import org.infinispan.spark.stream.InfinispanInputDStream
 import org.scalatest.{FunSpec, Matchers}
@@ -124,6 +125,22 @@ class InfinispanSparkConnectorSpec extends FunSpec with Matchers {
           val filteredRdd = rdd.filterByQuery[Book](query, classOf[Book])
 
           filteredRdd.values.map(_.price).sum.toInt should be(10711)
+        }
+      }
+    }
+
+    it("write to Infinispan") {
+      withRemoteCache[String, SimpleBook]("namedCache") { cache =>
+        withSpark { sc =>
+          val properties = new Properties
+          properties.setProperty("infinispan.client.hotrod.server_list", "localhost:11222")
+          properties.setProperty("infinispan.rdd.cacheName", cache.getName)
+
+          val simpleRdd = sc.parallelize(SimpleBook.sourceBooks.map(b => (b.isbn, b)))
+          simpleRdd.writeToInfinispan(properties)
+
+          cache should have size(6L)
+          cache.get("978-4048662024").title should be("高速スケーラブル検索エンジン ElasticSearch Server")
         }
       }
     }
