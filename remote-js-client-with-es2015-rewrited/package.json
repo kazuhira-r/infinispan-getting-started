@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "babel-preset-es2015": "^6.6.0",
     "babel-register": "^6.7.2",
     "chai": "^3.5.0",
     "infinispan": "^0.2.0",
