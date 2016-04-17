@@ -1,0 +1,17 @@
+{
+  "name": "remote-js-client-with-es2015-rewrited",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --compilers js:babel-register"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-register": "^6.7.2",
+    "chai": "^3.5.0",
+    "infinispan": "^0.2.0",
+    "mocha": "^2.4.5"
+  }
+}
