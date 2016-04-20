@@ -110,6 +110,7 @@ class KeyPartitionerSpec extends FunSpec with Matchers {
       val cache = managers(0).getCache[K, V](cacheName)
       fun(cache)
     } finally {
+      managers.foreach(_.getCache[K, V](cacheName).stop())
       managers.foreach(_.stop())
     }
   }
