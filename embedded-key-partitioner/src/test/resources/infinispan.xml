@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<infinispan
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="urn:infinispan:config:8.2 http://www.infinispan.org/schemas/infinispan-config-8.2.xsd"
+        xmlns="urn:infinispan:config:8.2">
+    <jgroups>
+        <stack-file name="udp" path="jgroups.xml"/>
+    </jgroups>
+
+    <cache-container default-cache="localCache">
+        <jmx duplicate-domains="true"/>
+        <transport cluster="cluster" stack="udp"/>
+
+        <local-cache name="localCache"/>
+
+        <distributed-cache name="defaultDistributedCache"/>
+
+        <distributed-cache name="customPartitionerDistributedCache"
+                           key-partitioner="org.littlewings.keypartitioner.MyKeyPartitioner"/>
+    </cache-container>
+</infinispan>
