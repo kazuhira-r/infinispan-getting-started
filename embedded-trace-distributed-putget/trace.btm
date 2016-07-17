@@ -14,21 +14,21 @@ IF TRUE
   DO traceln("[DataContainer] " + $0.getClass().getSimpleName() + ":get, exit")
 ENDRULE
 
-# RULE trace DataContainer.peek entry
-# INTERFACE ^org.infinispan.container.DataContainer
-# METHOD peek
-# AT ENTRY
-# IF TRUE
-#   DO traceln("[DataContainer] " + $0.getClass().getSimpleName() + ":peek, entry")
-# ENDRULE
-#  
-# RULE trace DataContainer.peek exit
-# INTERFACE ^org.infinispan.container.DataContainer
-# METHOD peek
-# AT EXIT
-# IF TRUE
-#   DO traceln("[DataContainer] " + $0.getClass().getSimpleName() + ":peek, exit")
-# ENDRULE
+RULE trace DataContainer.peek entry
+INTERFACE ^org.infinispan.container.DataContainer
+METHOD peek
+AT ENTRY
+IF TRUE
+  DO traceln("[DataContainer] " + $0.getClass().getSimpleName() + ":peek, entry")
+ENDRULE
+ 
+RULE trace DataContainer.peek exit
+INTERFACE ^org.infinispan.container.DataContainer
+METHOD peek
+AT EXIT
+IF TRUE
+  DO traceln("[DataContainer] " + $0.getClass().getSimpleName() + ":peek, exit")
+ENDRULE
 
 RULE trace DataContainer.put entry
 INTERFACE ^org.infinispan.container.DataContainer
