@@ -1,0 +1,784 @@
+RULE trace DataContainer.get entry
+INTERFACE ^org.infinispan.container.DataContainer
+METHOD get
+AT ENTRY
+IF TRUE
+  DO traceln("[DataContainer] " + $0.getClass().getSimpleName() + ":get, entry")
+ENDRULE
+
+RULE trace DataContainer.get exit
+INTERFACE ^org.infinispan.container.DataContainer
+METHOD get
+AT EXIT
+IF TRUE
+  DO traceln("[DataContainer] " + $0.getClass().getSimpleName() + ":get, exit")
+ENDRULE
+
+# RULE trace DataContainer.peek entry
+# INTERFACE ^org.infinispan.container.DataContainer
+# METHOD peek
+# AT ENTRY
+# IF TRUE
+#   DO traceln("[DataContainer] " + $0.getClass().getSimpleName() + ":peek, entry")
+# ENDRULE
+#  
+# RULE trace DataContainer.peek exit
+# INTERFACE ^org.infinispan.container.DataContainer
+# METHOD peek
+# AT EXIT
+# IF TRUE
+#   DO traceln("[DataContainer] " + $0.getClass().getSimpleName() + ":peek, exit")
+# ENDRULE
+
+RULE trace DataContainer.put entry
+INTERFACE ^org.infinispan.container.DataContainer
+METHOD put
+AT ENTRY
+IF TRUE
+  DO traceln("[DataContainer] " + $0.getClass().getSimpleName() + ":put, entry")
+ENDRULE
+
+RULE trace DataContainer.put exit
+INTERFACE ^org.infinispan.container.DataContainer
+METHOD put
+AT EXIT
+IF TRUE
+  DO traceln("[DataContainer] " + $0.getClass().getSimpleName() + ":put, exit")
+ENDRULE
+
+RULE trace EntryLookup.lookupEntry entry
+INTERFACE ^org.infinispan.context.EntryLookup
+METHOD lookupEntry
+AT ENTRY
+IF TRUE
+  DO traceln("[EntryLookup] " + $0.getClass().getSimpleName() + ":lookupEntry, entry")
+ENDRULE
+
+RULE trace EntryLookup.lookupEntry exit
+INTERFACE ^org.infinispan.context.EntryLookup
+METHOD lookupEntry
+AT EXIT
+IF TRUE
+  DO traceln("[EntryLookup] " + $0.getClass().getSimpleName() + ":lookupEntry, exit")
+ENDRULE
+
+RULE trace EntryLookup.putLookedUpEntry entry
+INTERFACE ^org.infinispan.context.EntryLookup
+METHOD putLookedUpEntry
+AT ENTRY
+IF TRUE
+  DO traceln("[EntryLookup] " + $0.getClass().getSimpleName() + ":putLookedUpEntry, entry")
+ENDRULE
+
+RULE trace EntryLookup.putLookedUpEntry exit
+INTERFACE ^org.infinispan.context.EntryLookup
+METHOD putLookedUpEntry
+AT EXIT
+IF TRUE
+  DO traceln("[EntryLookup] " + $0.getClass().getSimpleName() + ":putLookedUpEntry, exit")
+ENDRULE
+
+RULE trace EntryFactory.wrapEntryForReading entry
+INTERFACE ^org.infinispan.container.EntryFactory
+METHOD wrapEntryForReading
+AT ENTRY
+IF TRUE
+  DO traceln("[EntryFactory] " + $0.getClass().getSimpleName() + ":wrapEntryForReading, entry")
+ENDRULE
+
+RULE trace EntryFactory.wrapEntryForReading exit
+INTERFACE ^org.infinispan.container.EntryFactory
+METHOD wrapEntryForReading
+AT EXIT
+IF TRUE
+  DO traceln("[EntryFactory] " + $0.getClass().getSimpleName() + ":wrapEntryForReading, exit")
+ENDRULE
+
+RULE trace EntryFactory.wrapEntryForWriting entry
+INTERFACE ^org.infinispan.container.EntryFactory
+METHOD wrapEntryForWriting
+AT ENTRY
+IF TRUE
+  DO traceln("[EntryFactory] " + $0.getClass().getSimpleName() + ":wrapEntryForWriting, entry")
+ENDRULE
+
+RULE trace EntryFactory.wrapEntryForWriting exit
+INTERFACE ^org.infinispan.container.EntryFactory
+METHOD wrapEntryForWriting
+AT EXIT
+IF TRUE
+  DO traceln("[EntryFactory] " + $0.getClass().getSimpleName() + ":wrapEntryForWriting, exit")
+ENDRULE
+
+RULE trace EntryFactory.wrapExternalEntry entry
+INTERFACE ^org.infinispan.container.EntryFactory
+METHOD wrapExternalEntry
+AT ENTRY
+IF TRUE
+  DO traceln("[EntryFactory] " + $0.getClass().getSimpleName() + ":wrapExternalEntry, entry")
+ENDRULE
+
+RULE trace EntryFactory.wrapExternalEntry exit
+INTERFACE ^org.infinispan.container.EntryFactory
+METHOD wrapExternalEntry
+AT EXIT
+IF TRUE
+  DO traceln("[EntryFactory] " + $0.getClass().getSimpleName() + ":wrapExternalEntry, exit")
+ENDRULE
+
+RULE trace EntryFactory.getFromContext entry
+INTERFACE ^org.infinispan.container.EntryFactory
+METHOD getFromContext
+AT ENTRY
+IF TRUE
+  DO traceln("[EntryFactory] " + $0.getClass().getSimpleName() + ":getFromContext, entry")
+ENDRULE
+
+RULE trace EntryFactory.getFromContext exit
+INTERFACE ^org.infinispan.container.EntryFactory
+METHOD getFromContext
+AT EXIT
+IF TRUE
+  DO traceln("[EntryFactory] " + $0.getClass().getSimpleName() + ":getFromContext, exit")
+ENDRULE
+
+RULE trace EntryFactory.getFromContainer entry
+INTERFACE ^org.infinispan.container.EntryFactory
+METHOD getFromContainer
+AT ENTRY
+IF TRUE
+  DO traceln("[EntryFactory] " + $0.getClass().getSimpleName() + ":getFromContainer, entry")
+ENDRULE
+
+RULE trace EntryFactory.getFromContainer exit
+INTERFACE ^org.infinispan.container.EntryFactory
+METHOD getFromContainer
+AT EXIT
+IF TRUE
+  DO traceln("[EntryFactory] " + $0.getClass().getSimpleName() + ":getFromContainer, exit")
+ENDRULE
+
+RULE trace Marshaller.objectFromByteBuffer entry
+INTERFACE ^org.infinispan.commons.marshall.Marshaller
+METHOD objectFromByteBuffer
+AT ENTRY
+IF TRUE
+  DO traceln("[Marshaller] " + $0.getClass().getSimpleName() + ":objectFromByteBuffer, entry")
+ENDRULE
+ 
+RULE trace Marshaller.objectFromByteBuffer exit
+INTERFACE ^org.infinispan.commons.marshall.Marshaller
+METHOD objectFromByteBuffer
+AT EXIT
+IF TRUE
+  DO traceln("[Marshaller] " + $0.getClass().getSimpleName() + ":objectFromByteBuffer, exit")
+ENDRULE
+ 
+RULE trace Marshaller.objectToBuffer entry
+INTERFACE ^org.infinispan.commons.marshall.Marshaller
+METHOD objectToBuffer
+AT ENTRY
+IF TRUE
+  DO traceln("[Marshaller] " + $0.getClass().getSimpleName() + ":objectToBuffer, entry")
+ENDRULE
+ 
+RULE trace Marshaller.objectToBuffer exit
+INTERFACE ^org.infinispan.commons.marshall.Marshaller
+METHOD objectToBuffer
+AT EXIT
+IF TRUE
+  DO traceln("[Marshaller] " + $0.getClass().getSimpleName() + ":objectToBuffer, exit")
+ENDRULE
+
+RULE trace ReplicableCommand.perform entry
+INTERFACE ^org.infinispan.commands.ReplicableCommand
+METHOD perform
+AT ENTRY
+IF TRUE
+  DO traceln("[Command] " + $0.getClass().getSimpleName() + ":perform, entry")
+ENDRULE
+
+RULE trace ReplicableCommand.perform exit
+INTERFACE ^org.infinispan.commands.ReplicableCommand
+METHOD perform
+AT EXIT
+IF TRUE
+  DO traceln("[Command] " + $0.getClass().getSimpleName() + ":perform, exit")
+ENDRULE
+
+RULE trace BaseDistributionInterceptor.retrieveFromRemoteSource entry
+INTERFACE ^org.infinispan.interceptors.distribution.BaseDistributionInterceptor
+METHOD retrieveFromRemoteSource
+AT ENTRY
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":retrieveFromRemoteSource, entry")
+ENDRULE
+
+RULE trace BaseDistributionInterceptor.retrieveFromRemoteSource exit
+INTERFACE ^org.infinispan.interceptors.distribution.BaseDistributionInterceptor
+METHOD retrieveFromRemoteSource
+AT EXIT
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":retrieveFromRemoteSource, exit")
+ENDRULE
+
+RULE trace BaseDistributionInterceptor.invokeClusterGetCommandRemotely entry
+INTERFACE ^org.infinispan.interceptors.distribution.BaseDistributionInterceptor
+METHOD invokeClusterGetCommandRemotely
+AT ENTRY
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":invokeClusterGetCommandRemotely, entry")
+ENDRULE
+
+RULE trace BaseDistributionInterceptor.invokeClusterGetCommandRemotely exit
+INTERFACE ^org.infinispan.interceptors.distribution.BaseDistributionInterceptor
+METHOD invokeClusterGetCommandRemotely
+AT EXIT
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":invokeClusterGetCommandRemotely, exit")
+ENDRULE
+
+RULE trace RpcManager.invokeRemotely entry
+INTERFACE ^org.infinispan.remoting.rpc.RpcManager
+METHOD invokeRemotely
+AT ENTRY
+IF TRUE
+  DO traceln("[RpcManager] " + $0.getClass().getSimpleName() + ":invokeRemotely, entry")
+ENDRULE
+
+RULE trace RpcManager.invokeRemotely exit
+INTERFACE ^org.infinispan.remoting.rpc.RpcManager
+METHOD invokeRemotely
+AT EXIT
+IF TRUE
+  DO traceln("[RpcManager] " + $0.getClass().getSimpleName() + ":invokeRemotely, exit")
+ENDRULE
+
+# RULE trace RpcManager.invokeRemotelyAsync entry
+# INTERFACE ^org.infinispan.remoting.rpc.RpcManager
+# METHOD invokeRemotelyAsync
+# AT ENTRY
+# IF TRUE
+#   DO traceln("[RpcManager] " + $0.getClass().getSimpleName() + ":invokeRemotelyAsync, entry")
+# ENDRULE
+#  
+# RULE trace RpcManager.invokeRemotelyAsync exit
+# INTERFACE ^org.infinispan.remoting.rpc.RpcManager
+# METHOD invokeRemotelyAsync
+# AT EXIT
+# IF TRUE
+#   DO traceln("[RpcManager] " + $0.getClass().getSimpleName() + ":invokeRemotelyAsync, exit")
+# ENDRULE
+
+RULE trace Visitor.visitPutKeyValueCommand entry
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitPutKeyValueCommand
+AT ENTRY
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitPutKeyValueCommand, entry")
+ENDRULE
+
+RULE trace Visitor.visitPutKeyValueCommand exit
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitPutKeyValueCommand
+AT EXIT
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitPutKeyValueCommand, exit")
+ENDRULE
+
+RULE trace Visitor.visitRemoveCommand entry
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitRemoveCommand
+AT ENTRY
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitRemoveCommand, entry")
+ENDRULE
+
+RULE trace Visitor.visitRemoveCommand exit
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitRemoveCommand
+AT EXIT
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitRemoveCommand, exit")
+ENDRULE
+
+RULE trace Visitor.visitReplaceCommand entry
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitReplaceCommand
+AT ENTRY
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitReplaceCommand, entry")
+ENDRULE
+
+RULE trace Visitor.visitReplaceCommand exit
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitReplaceCommand
+AT EXIT
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitReplaceCommand, exit")
+ENDRULE
+
+RULE trace Visitor.visitClearCommand entry
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitClearCommand
+AT ENTRY
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitClearCommand, entry")
+ENDRULE
+
+RULE trace Visitor.visitClearCommand exit
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitClearCommand
+AT EXIT
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitClearCommand, exit")
+ENDRULE
+
+RULE trace Visitor.visitPutMapCommand entry
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitPutMapCommand
+AT ENTRY
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitPutMapCommand, entry")
+ENDRULE
+
+RULE trace Visitor.visitPutMapCommand exit
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitPutMapCommand
+AT EXIT
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitPutMapCommand, exit")
+ENDRULE
+
+RULE trace Visitor.visitEvictCommand entry
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitEvictCommand
+AT ENTRY
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitEvictCommand, entry")
+ENDRULE
+
+RULE trace Visitor.visitEvictCommand exit
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitEvictCommand
+AT EXIT
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitEvictCommand, exit")
+ENDRULE
+
+RULE trace Visitor.visitApplyDeltaCommand entry
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitApplyDeltaCommand
+AT ENTRY
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitApplyDeltaCommand, entry")
+ENDRULE
+
+RULE trace Visitor.visitApplyDeltaCommand exit
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitApplyDeltaCommand
+AT EXIT
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitApplyDeltaCommand, exit")
+ENDRULE
+
+RULE trace Visitor.visitSizeCommand entry
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitSizeCommand
+AT ENTRY
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitSizeCommand, entry")
+ENDRULE
+
+RULE trace Visitor.visitSizeCommand exit
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitSizeCommand
+AT EXIT
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitSizeCommand, exit")
+ENDRULE
+
+RULE trace Visitor.visitGetKeyValueCommand entry
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitGetKeyValueCommand
+AT ENTRY
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitGetKeyValueCommand, entry")
+ENDRULE
+
+RULE trace Visitor.visitGetKeyValueCommand exit
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitGetKeyValueCommand
+AT EXIT
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitGetKeyValueCommand, exit")
+ENDRULE
+
+RULE trace Visitor.visitGetCacheEntryCommand entry
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitGetCacheEntryCommand
+AT ENTRY
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitGetCacheEntryCommand, entry")
+ENDRULE
+
+RULE trace Visitor.visitGetCacheEntryCommand exit
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitGetCacheEntryCommand
+AT EXIT
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitGetCacheEntryCommand, exit")
+ENDRULE
+
+RULE trace Visitor.visitGetAllCommand entry
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitGetAllCommand
+AT ENTRY
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitGetAllCommand, entry")
+ENDRULE
+
+RULE trace Visitor.visitGetAllCommand exit
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitGetAllCommand
+AT EXIT
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitGetAllCommand, exit")
+ENDRULE
+
+RULE trace Visitor.visitKeySetCommand entry
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitKeySetCommand
+AT ENTRY
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitKeySetCommand, entry")
+ENDRULE
+
+RULE trace Visitor.visitKeySetCommand exit
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitKeySetCommand
+AT EXIT
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitKeySetCommand, exit")
+ENDRULE
+
+RULE trace Visitor.visitEntrySetCommand entry
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitEntrySetCommand
+AT ENTRY
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitEntrySetCommand, entry")
+ENDRULE
+
+RULE trace Visitor.visitEntrySetCommand exit
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitEntrySetCommand
+AT EXIT
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitEntrySetCommand, exit")
+ENDRULE
+
+RULE trace Visitor.visitPrepareCommand entry
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitPrepareCommand
+AT ENTRY
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitPrepareCommand, entry")
+ENDRULE
+
+RULE trace Visitor.visitPrepareCommand exit
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitPrepareCommand
+AT EXIT
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitPrepareCommand, exit")
+ENDRULE
+
+RULE trace Visitor.visitRollbackCommand entry
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitRollbackCommand
+AT ENTRY
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitRollbackCommand, entry")
+ENDRULE
+
+RULE trace Visitor.visitRollbackCommand exit
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitRollbackCommand
+AT EXIT
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitRollbackCommand, exit")
+ENDRULE
+
+RULE trace Visitor.visitCommitCommand entry
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitCommitCommand
+AT ENTRY
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitCommitCommand, entry")
+ENDRULE
+
+RULE trace Visitor.visitCommitCommand exit
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitCommitCommand
+AT EXIT
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitCommitCommand, exit")
+ENDRULE
+
+RULE trace Visitor.visitInvalidateCommand entry
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitInvalidateCommand
+AT ENTRY
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitInvalidateCommand, entry")
+ENDRULE
+
+RULE trace Visitor.visitInvalidateCommand exit
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitInvalidateCommand
+AT EXIT
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitInvalidateCommand, exit")
+ENDRULE
+
+RULE trace Visitor.visitInvalidateL1Command entry
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitInvalidateL1Command
+AT ENTRY
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitInvalidateL1Command, entry")
+ENDRULE
+
+RULE trace Visitor.visitInvalidateL1Command exit
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitInvalidateL1Command
+AT EXIT
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitInvalidateL1Command, exit")
+ENDRULE
+
+RULE trace Visitor.visitLockControlCommand entry
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitLockControlCommand
+AT ENTRY
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitLockControlCommand, entry")
+ENDRULE
+
+RULE trace Visitor.visitLockControlCommand exit
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitLockControlCommand
+AT EXIT
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitLockControlCommand, exit")
+ENDRULE
+
+RULE trace Visitor.visitUnknownCommand entry
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitUnknownCommand
+AT ENTRY
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitUnknownCommand, entry")
+ENDRULE
+
+RULE trace Visitor.visitUnknownCommand exit
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitUnknownCommand
+AT EXIT
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitUnknownCommand, exit")
+ENDRULE
+
+RULE trace Visitor.visitDistributedExecuteCommand entry
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitDistributedExecuteCommand
+AT ENTRY
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitDistributedExecuteCommand, entry")
+ENDRULE
+
+RULE trace Visitor.visitDistributedExecuteCommand exit
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitDistributedExecuteCommand
+AT EXIT
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitDistributedExecuteCommand, exit")
+ENDRULE
+
+RULE trace Visitor.visitGetKeysInGroupCommand entry
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitGetKeysInGroupCommand
+AT ENTRY
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitGetKeysInGroupCommand, entry")
+ENDRULE
+
+RULE trace Visitor.visitGetKeysInGroupCommand exit
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitGetKeysInGroupCommand
+AT EXIT
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitGetKeysInGroupCommand, exit")
+ENDRULE
+
+RULE trace Visitor.visitReadOnlyKeyCommand entry
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitReadOnlyKeyCommand
+AT ENTRY
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitReadOnlyKeyCommand, entry")
+ENDRULE
+
+RULE trace Visitor.visitReadOnlyKeyCommand exit
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitReadOnlyKeyCommand
+AT EXIT
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitReadOnlyKeyCommand, exit")
+ENDRULE
+
+RULE trace Visitor.visitReadOnlyManyCommand entry
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitReadOnlyManyCommand
+AT ENTRY
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitReadOnlyManyCommand, entry")
+ENDRULE
+
+RULE trace Visitor.visitReadOnlyManyCommand exit
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitReadOnlyManyCommand
+AT EXIT
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitReadOnlyManyCommand, exit")
+ENDRULE
+
+RULE trace Visitor.visitWriteOnlyKeyCommand entry
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitWriteOnlyKeyCommand
+AT ENTRY
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitWriteOnlyKeyCommand, entry")
+ENDRULE
+
+RULE trace Visitor.visitWriteOnlyKeyCommand exit
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitWriteOnlyKeyCommand
+AT EXIT
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitWriteOnlyKeyCommand, exit")
+ENDRULE
+
+RULE trace Visitor.visitReadWriteKeyValueCommand entry
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitReadWriteKeyValueCommand
+AT ENTRY
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitReadWriteKeyValueCommand, entry")
+ENDRULE
+
+RULE trace Visitor.visitReadWriteKeyValueCommand exit
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitReadWriteKeyValueCommand
+AT EXIT
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitReadWriteKeyValueCommand, exit")
+ENDRULE
+
+RULE trace Visitor.visitReadWriteKeyCommand entry
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitReadWriteKeyCommand
+AT ENTRY
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitReadWriteKeyCommand, entry")
+ENDRULE
+
+RULE trace Visitor.visitReadWriteKeyCommand exit
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitReadWriteKeyCommand
+AT EXIT
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitReadWriteKeyCommand, exit")
+ENDRULE
+
+RULE trace Visitor.visitWriteOnlyManyEntriesCommand entry
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitWriteOnlyManyEntriesCommand
+AT ENTRY
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitWriteOnlyManyEntriesCommand, entry")
+ENDRULE
+
+RULE trace Visitor.visitWriteOnlyManyEntriesCommand exit
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitWriteOnlyManyEntriesCommand
+AT EXIT
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitWriteOnlyManyEntriesCommand, exit")
+ENDRULE
+
+RULE trace Visitor.visitWriteOnlyKeyValueCommand entry
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitWriteOnlyKeyValueCommand
+AT ENTRY
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitWriteOnlyKeyValueCommand, entry")
+ENDRULE
+
+RULE trace Visitor.visitWriteOnlyKeyValueCommand exit
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitWriteOnlyKeyValueCommand
+AT EXIT
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitWriteOnlyKeyValueCommand, exit")
+ENDRULE
+
+RULE trace Visitor.visitWriteOnlyManyCommand entry
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitWriteOnlyManyCommand
+AT ENTRY
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitWriteOnlyManyCommand, entry")
+ENDRULE
+
+RULE trace Visitor.visitWriteOnlyManyCommand exit
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitWriteOnlyManyCommand
+AT EXIT
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitWriteOnlyManyCommand, exit")
+ENDRULE
+
+RULE trace Visitor.visitReadWriteManyCommand entry
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitReadWriteManyCommand
+AT ENTRY
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitReadWriteManyCommand, entry")
+ENDRULE
+
+RULE trace Visitor.visitReadWriteManyCommand exit
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitReadWriteManyCommand
+AT EXIT
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitReadWriteManyCommand, exit")
+ENDRULE
+
+RULE trace Visitor.visitReadWriteManyEntriesCommand entry
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitReadWriteManyEntriesCommand
+AT ENTRY
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitReadWriteManyEntriesCommand, entry")
+ENDRULE
+
+RULE trace Visitor.visitReadWriteManyEntriesCommand exit
+INTERFACE ^org.infinispan.commands.Visitor
+METHOD visitReadWriteManyEntriesCommand
+AT EXIT
+IF TRUE
+  DO traceln("[Interceptor] " + $0.getClass().getSimpleName() + ":visitReadWriteManyEntriesCommand, exit")
+ENDRULE
+
