@@ -20,7 +20,8 @@ class TraceDistributedCachePutGetSpec extends FunSpec with Matchers {
         val dm = cache.getAdvancedCache.getDistributionManager
         val self = cache.getAdvancedCache.getRpcManager.getAddress
 
-        val pickAssignedSelfKey = keys.find(key => dm.getLocality(key).isLocal)
+        // val pickAssignedSelfKey = keys.find(key => dm.getLocality(key).isLocal)
+        val pickAssignedSelfKey = keys.find(key => dm.getLocality(key).isLocal && dm.getPrimaryLocation(key) == self)
 
         pickAssignedSelfKey should not be(None)
 
@@ -32,6 +33,12 @@ class TraceDistributedCachePutGetSpec extends FunSpec with Matchers {
           println(s"===== RE LOOKUP KEY = $key START =====")
           cache.get(key) should be(key.replace("key", "value"))
           println(s"===== RE LOOKUP KEY = $key END =====")
+
+          val newValue = cache.get(key) + "-new"
+
+          println(s"===== UPDATE KEY = $key START =====")
+          cache.put(key, newValue)
+          println(s"===== UPDATE KEY = $key END =====")
         }
       }
     }
@@ -62,6 +69,12 @@ class TraceDistributedCachePutGetSpec extends FunSpec with Matchers {
           println(s"===== RE LOOKUP KEY = $key START =====")
           cache.get(key) should be(key.replace("key", "value"))
           println(s"===== RE LOOKUP KEY = $key END =====")
+
+          val newValue = cache.get(key) + "-new"
+
+          println(s"===== UPDATE KEY = $key START =====")
+          cache.put(key, newValue)
+          println(s"===== UPDATE KEY = $key END =====")
         }
       }
     }
