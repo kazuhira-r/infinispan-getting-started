@@ -30,9 +30,11 @@ class CompatibilitySpec extends FunSpec {
 
         embeddedCache.put("key-from-embedded", "value-from-embedded")
         remoteCache.get("key-from-embedded") should be(null)
+        embeddedCache.get("key-from-embedded") should be("value-from-embedded")
 
         remoteCache.put("key-from-remote", "value-from-remote")
         embeddedCache.get("key-from-remote") should be(null)
+        remoteCache.get("key-from-remote") should be(null)
 
         remoteCache.stop()
         remoteServer.stop
@@ -58,9 +60,11 @@ class CompatibilitySpec extends FunSpec {
 
         embeddedCache.put("key-from-embedded", "value-from-embedded")
         remoteCache.get("key-from-embedded") should be("value-from-embedded")
+        embeddedCache.get("key-from-embedded") should be("value-from-embedded")
 
         remoteCache.put("key-from-remote", "value-from-remote")
         embeddedCache.get("key-from-remote") should be("value-from-remote")
+        remoteCache.get("key-from-remote") should be("value-from-remote")
 
         remoteCache.stop()
         remoteServer.stop
@@ -86,9 +90,11 @@ class CompatibilitySpec extends FunSpec {
 
         embeddedCache.put("key-from-embedded", new Person("磯野カツオ", 11))
         remoteCache.get("key-from-embedded") should be(new Person("磯野カツオ", 11))
+        embeddedCache.get("key-from-embedded") should be(new Person("磯野カツオ", 11))
 
         remoteCache.put("key-from-remote", new Person("磯野ワカメ", 9))
         embeddedCache.get("key-from-remote") should be(new Person("磯野ワカメ", 9))
+        remoteCache.get("key-from-remote") should be(new Person("磯野ワカメ", 9))
 
         remoteCache.stop()
         remoteServer.stop
