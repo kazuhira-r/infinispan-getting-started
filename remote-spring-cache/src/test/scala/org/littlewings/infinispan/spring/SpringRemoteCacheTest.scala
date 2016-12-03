@@ -13,7 +13,7 @@ import org.scalatest.Matchers
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.cache.CacheManager
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
+import org.springframework.test.context.junit4.SpringRunner
 
 object SpringRemoteCacheTest {
   var hotRodServer: HotRodServer = _
@@ -49,7 +49,7 @@ object SpringRemoteCacheTest {
   def tearDownClass(): Unit = hotRodServer.stop
 }
 
-@RunWith(classOf[SpringJUnit4ClassRunner])
+@RunWith(classOf[SpringRunner])
 @SpringBootTest(classes = Array(classOf[App]))
 class SpringRemoteCacheTest extends Matchers {
   @Autowired
