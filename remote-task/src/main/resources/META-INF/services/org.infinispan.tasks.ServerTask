@@ -1,0 +1,6 @@
+org.littlewings.infinispan.task.OneNodeSimpleTask
+org.littlewings.infinispan.task.AllNodeSimpleTask
+org.littlewings.infinispan.task.CacheSimpleTask
+org.littlewings.infinispan.task.BookPriceDoublingTask
+org.littlewings.infinispan.task.CompatibilityBookPriceDoublingTask
+org.littlewings.infinispan.task.BookPriceSumTask
