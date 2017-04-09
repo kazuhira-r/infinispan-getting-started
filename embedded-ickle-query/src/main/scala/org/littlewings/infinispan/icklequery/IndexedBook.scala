@@ -20,7 +20,7 @@ object IndexedBook {
 @Analyzer(impl = classOf[JapaneseAnalyzer])
 @SerialVersionUID(1L)
 class IndexedBook extends Serializable {
-  @DocumentId
+  @Field(analyze = Analyze.NO)
   @BeanProperty
   var isbn: String = _
 
