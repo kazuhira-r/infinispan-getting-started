@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<infinispan
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="urn:infinispan:config:9.0 http://www.infinispan.org/schemas/infinispan-config-9.0.xsd"
+        xmlns="urn:infinispan:config:9.0">
+    <jgroups>
+        <stack-file name="udp" path="default-configs/default-jgroups-udp.xml"/>
+    </jgroups>
+    <cache-container>
+        <jmx duplicate-domains="true"/>
+        <transport cluster="test-cluster" stack="udp"/>
+
+        <distributed-cache name="defaultCache"/>
+
+        <distributed-cache name="objectWithSizeCache">
+            <memory>
+                <object size="3"/>
+            </memory>
+        </distributed-cache>
+
+        <distributed-cache name="binaryCache">
+            <memory>
+                <binary/>
+            </memory>
+        </distributed-cache>
+        <distributed-cache name="binaryByCountCache">
+            <memory>
+                <binary size="3"/>
+                <!-- 次でも同じ
+                <binary size="3" eviction="COUNT"/>
+                -->
+            </memory>
+        </distributed-cache>
+        <distributed-cache name="binaryByMemoryCache">
+            <memory>
+                <binary size="1000" eviction="MEMORY"/>
+            </memory>
+        </distributed-cache>
+        <distributed-cache name="offHeapCache">
+            <memory>
+                <off-heap/>
+            </memory>
+        </distributed-cache>
+        <distributed-cache name="offHeapByCountCache">
+            <memory>
+                <off-heap size="3"/>
+                <!-- 次でも同じ
+                <off-heap size="3" eviction="COUNT"/>
+                -->
+            </memory>
+        </distributed-cache>
+        <distributed-cache name="offHeapByMemoryCache">
+            <memory>
+                <off-heap size="1000" eviction="MEMORY"/>
+            </memory>
+        </distributed-cache>
+        <distributed-cache name="offHeapByCountWithAddressCountCache">
+            <memory>
+                <off-heap size="3" eviction="COUNT" address-count="2097152"/>
+            </memory>
+        </distributed-cache>
+    </cache-container>
+</infinispan>
