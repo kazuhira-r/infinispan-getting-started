@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<infinispan
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="urn:infinispan:config:9.1 http://www.infinispan.org/schemas/infinispan-config-9.1.xsd"
+        xmlns="urn:infinispan:config:9.1">
+    <jgroups>
+        <stack-file name="udp" path="default-configs/default-jgroups-udp.xml"/>
+    </jgroups>
+    <cache-container>
+        <jmx duplicate-domains="true"/>
+        <transport cluster="test-cluster" stack="udp"/>
+
+        <counters xmlns="urn:infinispan:config:counters:9.0" num-owners="2" reliability="AVAILABLE">
+            <strong-counter name="simpleStrongCounter"/>
+            <weak-counter name="simpleWeakCounter"/>
+
+            <!--
+            <strong-counter name="simpleStrongCounter" storage="VOLATILE"/>
+            <weak-counter name="simpleWeakCounter" storage="VOLATILE"/>
+            -->
+
+            <strong-counter name="initialValuedStrongCounter" initial-value="100"/>
+            <weak-counter name="initialValuedWeakCounter" initial-value="100"/>
+
+            <strong-counter name="boundedStrongCounter" initial-value="100">
+                <lower-bound value="50"/>
+                <upper-bound value="150"/>
+            </strong-counter>
+
+            <weak-counter name="tunedConcurrencyLevelWeakCounter" concurrency-level="256"/>
+        </counters>
+    </cache-container>
+</infinispan>
