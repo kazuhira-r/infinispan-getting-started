@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<infinispan
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="urn:infinispan:config:9.1 http://www.infinispan.org/schemas/infinispan-config-9.1.xsd"
+        xmlns="urn:infinispan:config:9.1">
+    <jgroups>
+        <stack-file name="udp" path="default-configs/default-jgroups-udp.xml"/>
+    </jgroups>
+    <cache-container>
+        <jmx duplicate-domains="true"/>
+        <transport cluster="test-cluster" stack="udp"/>
+
+        <distributed-cache name="indexedBookCache">
+            <indexing index="LOCAL">
+                <indexed-entities>
+                    <indexed-entity>org.littlewings.infinispan.query.IndexedBook</indexed-entity>
+                </indexed-entities>
+                <property name="hibernate.search.default.indexmanager">elasticsearch</property>
+                <property name="hibernate.search.default.elasticsearch.host">http://localhost:9200</property>
+
+                <!-- for development -->
+                <property name="hibernate.search.default.elasticsearch.index_schema_management_strategy">
+                    drop-and-create
+                </property>
+                <property name="hibernate.search.default.elasticsearch.refresh_after_write">true</property>
+                <property name="hibernate.search.default.elasticsearch.required_index_status">yellow</property>
+            </indexing>
+        </distributed-cache>
+    </cache-container>
+</infinispan>
