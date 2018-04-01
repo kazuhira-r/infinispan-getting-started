@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<infinispan
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="urn:infinispan:config:9.2 http://www.infinispan.org/schemas/infinispan-config-9.2.xsd"
+        xmlns="urn:infinispan:config:9.2">
+    <jgroups>
+        <stack-file name="udp" path="default-configs/default-jgroups-udp.xml"/>
+    </jgroups>
+
+    <cache-container>
+        <transport cluster="test-cluster" stack="udp"/>
+
+        <distributed-cache name="defaultEvictionStrategyCache" owners="1"/>
+
+        <distributed-cache name="noneEvictionStrategyCache" owners="1">
+            <memory>
+                <object strategy="NONE" size="10"/>
+            </memory>
+        </distributed-cache>
+
+        <distributed-cache name="manualEvictionStrategyCache" owners="1">
+            <memory>
+                <object strategy="MANUAL" size="10"/>
+            </memory>
+        </distributed-cache>
+
+        <distributed-cache name="removeEvictionStrategyCache" owners="1">
+            <memory>
+                <object strategy="REMOVE" size="10"/>
+            </memory>
+        </distributed-cache>
+
+        <distributed-cache name="exceptionEvictionStrategyCache" owners="1">
+            <memory>
+                <object strategy="EXCEPTION" size="10"/>
+            </memory>
+            <!-- NON_DURABLE_XA または FULL_XA である必要がある -->
+            <transaction mode="NON_DURABLE_XA"/>
+        </distributed-cache>
+    </cache-container>
+</infinispan>
