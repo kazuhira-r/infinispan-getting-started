@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<infinispan
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="urn:infinispan:config:9.4 http://www.infinispan.org/schemas/infinispan-config-9.4.xsd"
+        xmlns="urn:infinispan:config:9.4">
+
+    <jgroups>
+        <stack-file name="udp" path="default-configs/default-jgroups-udp.xml"/>
+    </jgroups>
+
+    <cache-container shutdown-hook="REGISTER">
+        <distributed-cache name="defaultCache"/>
+
+        <distributed-cache name="l1Cache" l1-lifespan="1000"/>
+
+        <distributed-cache name="sizeBoundedCache">
+            <memory><binary size="100"/></memory>
+        </distributed-cache>
+
+        <distributed-cache name="sizeBoundedL1Cache" l1-lifespan="1000">
+            <memory><binary size="100"/></memory>
+        </distributed-cache>
+
+        <distributed-cache name="defaultOffHeapCache">
+            <memory><off-heap/></memory>
+        </distributed-cache>
+
+        <distributed-cache name="l1OffHeapCache" l1-lifespan="1000">
+            <memory><off-heap/></memory>
+        </distributed-cache>
+
+        <distributed-cache name="sizeBoundedOffHeapCache">
+            <memory><off-heap size="100"/></memory>
+        </distributed-cache>
+
+        <distributed-cache name="sizeBoundedL1OffHeapCache" l1-lifespan="1000">
+            <memory><off-heap size="100"/></memory>
+        </distributed-cache>
+
+        <local-cache name="localCache"/>
+        <replicated-cache name="replicatedCache"/>
+        <scattered-cache name="scatteredCache"/>
+    </cache-container>
+
+</infinispan>
