@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<infinispan
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="urn:infinispan:config:10.1 https://infinispan.org/schemas/infinispan-config-10.1.xsd"
+        xmlns="urn:infinispan:config:10.1">
+
+    <cache-container>
+        <transport stack="udp"/>
+
+        <distributed-cache name="expirationCache" configuration="expirationCacheTemplate"/>
+
+        <distributed-cache-configuration name="expirationCacheTemplate">
+            <expiration max-idle="5" lifespan="10"/>
+        </distributed-cache-configuration>
+    </cache-container>
+</infinispan>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<infinispan
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="urn:infinispan:config:10.1 https://infinispan.org/schemas/infinispan-config-10.1.xsd"
+        xmlns="urn:infinispan:config:10.1">
+
+    <cache-container>
+        <transport stack="udp"/>
+
+        <distributed-cache-configuration name="offHeapContainerCacheTemplate">
+            <memory>
+                <off-heap eviction="MEMORY" size="896000"/>
+            </memory>
+        </distributed-cache-configuration>
+
+        <distributed-cache name="offHeapCache" configuration="offHeapContainerCacheTemplate"/>
+
+        <distributed-cache-configuration name="expirationCacheTemplate">
+            <expiration max-idle="5" lifespan="10"/>
+        </distributed-cache-configuration>
+
+        <distributed-cache-configuration name="offHeapContainerWithExpirationCacheTemplate" configuration="expirationCacheTemplate">
+            <expiration lifespan="15" interval="120000"/>
+            <memory>
+                <off-heap eviction="MEMORY" size="896000"/>
+            </memory>
+        </distributed-cache-configuration>
+
+        <distributed-cache name="offHeapWithExpirationCache" configuration="offHeapContainerWithExpirationCacheTemplate">
+            <memory>
+                <off-heap size="1792000"/>
+            </memory>
+            <transaction mode="NON_XA"/>
+        </distributed-cache>
+    </cache-container>
+</infinispan>
