@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<infinispan
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="urn:infinispan:config:11.0 https://infinispan.org/schemas/infinispan-config-11.0.xsd"
+        xmlns="urn:infinispan:config:11.0">
+
+    <cache-container shutdown-hook="REGISTER">
+        <transport cluster="udp"/>
+
+        <serialization>
+            <context-initializer class="org.littlewings.infinispan.query.simply.EntitiesInitializerImpl"/>
+        </serialization>
+
+        <distributed-cache name="bookCache"/>
+
+        <distributed-cache name="indexedBookCache">
+            <indexing>
+                <indexed-entities>
+                    <indexed-entity>org.littlewings.infinispan.query.simply.IndexedBook</indexed-entity>
+                </indexed-entities>
+
+                <property name="default.indexmanager">near-real-time</property>
+                <property name="default.directory_provider">filesystem</property>
+                <property name="default.indexBase">target/infinispan-lucene-index/index-${node.index}-${node.start.timestamp}</property>
+            </indexing>
+        </distributed-cache>
+    </cache-container>
+</infinispan>
