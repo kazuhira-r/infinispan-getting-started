@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<infinispan
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="urn:infinispan:config:12.1 https://infinispan.org/schemas/infinispan-config-12.1.xsd"
+        xmlns="urn:infinispan:config:12.1">
+    <cache-container shutdown-hook="REGISTER">
+        <transport cluster="ispn-cluster" stack="udp"/>
+
+        <distributed-cache name="bookCache" owners="1">
+            <encoding>
+                <key media-type="application/x-protostream"/>
+                <value media-type="application/x-protostream"/>
+            </encoding>
+        </distributed-cache>
+
+        <serialization marshaller="org.infinispan.commons.marshall.JavaSerializationMarshaller">
+            <allow-list>
+                <class>org.littlewings.infinispan.distexec.protostream.entity.SerializableSummary</class>
+            </allow-list>
+        </serialization>
+    </cache-container>
+</infinispan>

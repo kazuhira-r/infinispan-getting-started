@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<infinispan
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="urn:infinispan:config:12.1 https://infinispan.org/schemas/infinispan-config-12.1.xsd"
+        xmlns="urn:infinispan:config:12.1">
+    <cache-container shutdown-hook="REGISTER">
+        <transport cluster="ispn-cluster" stack="udp"/>
+
+        <distributed-cache name="bookCache" owners="1">
+            <encoding>
+                <!-- <serialization marshaller="org.infinispan.commons.marshall.JavaSerializationMarshaller"> を入れたら明示が必要 -->
+                <key media-type="application/x-protostream"/>
+                <value media-type="application/x-protostream"/>
+            </encoding>
+        </distributed-cache>
+
+        <serialization marshaller="org.infinispan.commons.marshall.JavaSerializationMarshaller">
+            <!-- <context-initializer class="org.littlewings.infinispan.distexec.protostream.entity.EntityInitializerImpl"/>  自動生成されるので不要 -->
+            <allow-list>
+                <class>org.littlewings.infinispan.distexec.protostream.StreamSummaryTask</class>
+                <class>org.littlewings.infinispan.distexec.protostream.FunctionalMapSummaryTask</class>
+                <regex>org\.littlewings\.infinispan\.distexec\.protostream\.entity\.Serializable.+</regex>
+                <regex>org\.jboss\.logging\..+</regex>
+            </allow-list>
+        </serialization>
+    </cache-container>
+</infinispan>
