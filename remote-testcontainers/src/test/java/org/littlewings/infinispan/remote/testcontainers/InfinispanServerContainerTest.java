@@ -1,4 +1,4 @@
-package org.littlewings.infinispan.remote.testcontainer;
+package org.littlewings.infinispan.remote.testcontainers;
 
 import java.util.List;
 import java.util.stream.IntStream;

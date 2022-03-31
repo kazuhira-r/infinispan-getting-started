@@ -1,4 +1,4 @@
-package org.littlewings.infinispan.remote.testcontainer;
+package org.littlewings.infinispan.remote.testcontainers;
 
 import org.infinispan.protostream.annotations.ProtoFactory;
 import org.infinispan.protostream.annotations.ProtoField;
