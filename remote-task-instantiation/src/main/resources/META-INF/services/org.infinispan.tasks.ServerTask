@@ -1,0 +1,2 @@
+org.littlewings.infinispan.remote.task.SharedInstanceSummarizeServerTask
+org.littlewings.infinispan.remote.task.IsolatedInstanceSummarizeServerTask
